@@ -5,15 +5,16 @@ import DelaunayTriangulation as DT
 export DT
 using GeoStatsProcesses
 using GeoStats, CairoMakie
+using Distributions, Random
 export NearestNeighbourPointProcess, 
     add_point!, delete_point!
-export del2
+
+export single, del2
+
 export GibbsNearestNeighbourPointProcess
 
-abstract type Interaction end
-
 include("nearestneighbourpointprocess.jl")
-include("delaunay_interaction.jl")
+include("interaction.jl")
 include("gibbsnearestneighbourpointprocess.jl")
 
 end
