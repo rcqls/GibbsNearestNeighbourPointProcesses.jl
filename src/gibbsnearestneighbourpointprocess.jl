@@ -8,12 +8,16 @@ mutable struct GibbsNearestNeighbourPointProcess <: GeoStatsProcesses.PointProce
         gpp.interactions = convert.(Interaction,interactions)
         gpp.domain = domain
         gpp.border = border
-        g = GibbsNearestNeighbourPointProcesses.domain(gpp, inside = false)
-        n = 100
-        pts = collect(zip(rand(Uniform(g[1]...),n),rand(Uniform(g[1]...),n)))
-        gpp.nnpp = NearestNeighbourPointProcess(pts)
+        initpoints!(gpp)
         return gpp
     end
+end
+
+function initpoints!(gpp::GibbsNearestNeighbourPointProcess)
+    g = domain(gpp, inside = false)
+    n = 100
+    pts = collect(zip(rand(Uniform(g[1]...),n),rand(Uniform(g[1]...),n)))
+    gpp.nnpp = NearestNeighbourPointProcess(pts)
 end
 
 vertices(gnnpp::GibbsNearestNeighbourPointProcess) = vertices(gnnpp.nnpp)
