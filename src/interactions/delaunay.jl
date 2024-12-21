@@ -12,7 +12,7 @@ end
 
 function energy(del2::Del2Interaction, points::Vector{Tuple{Float64, Float64}}, triangles::Set{Tuple{Int64, Int64, Int64}})
     entot = 0.0
-    for t in  DT.each_solid_triangle(triangles)
+    for t in  triangles
         for e in DT.triangle_edges(t)
             ## if all(e .> 0)
                 l² = sum((points[e[1]] .- points[e[2]]).^2)

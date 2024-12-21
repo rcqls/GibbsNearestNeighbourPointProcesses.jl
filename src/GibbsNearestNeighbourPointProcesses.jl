@@ -4,8 +4,12 @@ using DelaunayTriangulation
 import DelaunayTriangulation as DT
 export DT
 using GeoStatsProcesses
-using GeoStats, CairoMakie
+using GeoStats
+import GeoStats: Box, Point
+
+using CairoMakie
 using Distributions, Random
+
 export NearestNeighbourPointProcess, 
     add_point!, delete_point!
 
